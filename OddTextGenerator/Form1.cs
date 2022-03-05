@@ -12,6 +12,7 @@ namespace OddTextGenerator
 {
     public partial class Form1 : Form
     {
+        static int alfaromeo;
         public Form1()
         {
             InitializeComponent();
@@ -19,7 +20,11 @@ namespace OddTextGenerator
 
         private void button1_Click(object sender, EventArgs e)
         {
-            richTextBox1.Text += new String(bs()+"\n");
+            for (int i = 0; i < 10; i++)
+            {
+                richTextBox1.Text += new String(bs() + "\n");
+            }
+           
         }
 
         private string bs()
@@ -50,9 +55,17 @@ namespace OddTextGenerator
 
             for (int i = 0; i < 11; i++)
             {
-                charles[i] = Convert.ToChar(i + 20);
+                //      charles[i] = Convert.ToChar(i + 20);
+                //      charles[i] = Convert.ToChar(i + 90);
+                charles[i] = Convert.ToChar(i + alfaromeo);
             }
             return new string(charles);           
+        }
+
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            label1.Text = trackBar1.Value.ToString();
+            alfaromeo = trackBar1.Value;
         }
     }
 }
