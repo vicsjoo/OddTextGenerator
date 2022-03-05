@@ -19,7 +19,7 @@ namespace OddTextGenerator
 
         private void button1_Click(object sender, EventArgs e)
         {
-            richTextBox1.Text = bs();
+            richTextBox1.Text += new String(bs()+"\n");
         }
 
         private string bs()
@@ -30,6 +30,7 @@ namespace OddTextGenerator
         public static String GetRandomString()
         {
             var allowedChars = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789";
+            allowedChars = WeirdChars();
             var length = 15;
 
             var chars = new char[length];
@@ -41,6 +42,17 @@ namespace OddTextGenerator
             }
 
             return new String(chars);
+        }
+
+        public static String WeirdChars()
+        {
+            char[] charles = new char[12];
+
+            for (int i = 0; i < 11; i++)
+            {
+                charles[i] = Convert.ToChar(i + 20);
+            }
+            return new string(charles);           
         }
     }
 }
